@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FirstViewController.swift
 //  flashcardTab
 //
 //  Created by mac on 2018/12/14.
@@ -8,13 +8,23 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-
+class cardListVC: UIViewController {
+    
+    
+    //mark outlets
+    
+    @IBOutlet weak var cardListTableView: UITableView!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
 
+    @IBAction func addclicked(_ sender: Any) {
+    }
 }
 
