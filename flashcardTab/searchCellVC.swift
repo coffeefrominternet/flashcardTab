@@ -8,7 +8,7 @@
 
 import UIKit
 
-class searchCell: UITableViewCell {
+class searchCellVC: UITableViewCell {
 
     // mark outlets
     

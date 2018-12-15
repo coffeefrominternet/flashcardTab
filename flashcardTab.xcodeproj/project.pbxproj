@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0407996421C3D85500C2B5FB /* searchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407996321C3D85500C2B5FB /* searchCell.swift */; };
+		0407996421C3D85500C2B5FB /* searchCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407996321C3D85500C2B5FB /* searchCellVC.swift */; };
 		04AD6ACC21C3CACA0045DE7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6ACB21C3CACA0045DE7A /* AppDelegate.swift */; };
 		04AD6ACE21C3CACA0045DE7A /* cardListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6ACD21C3CACA0045DE7A /* cardListVC.swift */; };
 		04AD6AD021C3CACA0045DE7A /* searchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6ACF21C3CACA0045DE7A /* searchVC.swift */; };
@@ -15,10 +15,11 @@
 		04AD6AD521C3CADB0045DE7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04AD6AD421C3CADB0045DE7A /* Assets.xcassets */; };
 		04AD6AD821C3CADB0045DE7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04AD6AD621C3CADB0045DE7A /* LaunchScreen.storyboard */; };
 		04AD6AE221C3D4040045DE7A /* cardlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6AE121C3D4040045DE7A /* cardlistCell.swift */; };
+		04DF56C821C58796002BE913 /* selectImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DF56C721C58796002BE913 /* selectImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0407996321C3D85500C2B5FB /* searchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchCell.swift; sourceTree = "<group>"; };
+		0407996321C3D85500C2B5FB /* searchCellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchCellVC.swift; sourceTree = "<group>"; };
 		04AD6AC821C3CAC90045DE7A /* flashcardTab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flashcardTab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AD6ACB21C3CACA0045DE7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04AD6ACD21C3CACA0045DE7A /* cardListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardListVC.swift; sourceTree = "<group>"; };
@@ -28,6 +29,7 @@
 		04AD6AD721C3CADB0045DE7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04AD6AD921C3CADB0045DE7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04AD6AE121C3D4040045DE7A /* cardlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardlistCell.swift; sourceTree = "<group>"; };
+		04DF56C721C58796002BE913 /* selectImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,8 @@
 				04AD6ACB21C3CACA0045DE7A /* AppDelegate.swift */,
 				0407996521C3D86E00C2B5FB /* cardList */,
 				04AD6ACF21C3CACA0045DE7A /* searchVC.swift */,
-				0407996321C3D85500C2B5FB /* searchCell.swift */,
+				0407996321C3D85500C2B5FB /* searchCellVC.swift */,
+				04DF56C721C58796002BE913 /* selectImage.png */,
 				04AD6AD121C3CACA0045DE7A /* Main.storyboard */,
 				04AD6AD421C3CADB0045DE7A /* Assets.xcassets */,
 				04AD6AD621C3CADB0045DE7A /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04AD6AD821C3CADB0045DE7A /* LaunchScreen.storyboard in Resources */,
+				04DF56C821C58796002BE913 /* selectImage.png in Resources */,
 				04AD6AD521C3CADB0045DE7A /* Assets.xcassets in Resources */,
 				04AD6AD321C3CACA0045DE7A /* Main.storyboard in Resources */,
 			);
@@ -153,7 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04AD6AE221C3D4040045DE7A /* cardlistCell.swift in Sources */,
-				0407996421C3D85500C2B5FB /* searchCell.swift in Sources */,
+				0407996421C3D85500C2B5FB /* searchCellVC.swift in Sources */,
 				04AD6AD021C3CACA0045DE7A /* searchVC.swift in Sources */,
 				04AD6ACC21C3CACA0045DE7A /* AppDelegate.swift in Sources */,
 				04AD6ACE21C3CACA0045DE7A /* cardListVC.swift in Sources */,

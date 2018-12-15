@@ -7,15 +7,17 @@
 //
 
 import UIKit
-var searchingWord = ""
-class searchVC : UIViewController {
+var arananKelime = "bird"
+class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
+  
+    
 
     //mark variables
     var myApiID = "7507132-6d060e01c5cf8a2e0ff1c0552"
     
     
-    
-    
+    var resimlerArray = [UIImage]()
+    var nameArray = [String]()
     
     
     
@@ -28,81 +30,138 @@ class searchVC : UIViewController {
     
     @IBOutlet weak var searchTableView: UITableView!
     
-    
-    
-    
-    
-    
-    
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
     }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return resimlerArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for : indexPath) as! searchCellVC
+        
+        
+        cell.searchCellImageView.image = resimlerArray[indexPath.row]
+        
+        
+        
+        return cell
+    }
+    
+    
+    
     
     @IBAction func searchButtonClicked(_ sender: Any) {
-        
-        if searchTF.text != "bird" {
-        
-            searchingWord = searchTF.text!
+        if searchTF.text != ""{
             
+            arananKelime = searchTF.text!
         }
-        getTodayResult()
         
-    }
-    
-    
-    func getTodayResult(){
         
-        if let url = URL(string: "https://pixabay.com/api/?key=7507132-6d060e01c5cf8a2e0ff1c0552&q=\(searchingWord)&image_type=photo&pretty=true"
-            ){
-            let request = URLRequest(url: url);
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if error == nil{
+        let url = URL(string: "https://pixabay.com/api/?key=7507132-6d060e01c5cf8a2e0ff1c0552&q=\(arananKelime)&image_type=photo&pretty=true")
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: url!) { (data, response, error) in
+            
+            if error != nil {
+                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                
+                if data != nil {
                     
-                    if let incomingData = data{
+                    do {
                         
-                        do{
+                        let jSONResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        DispatchQueue.main.async {
+                            // print(jSONResult["hits"])
                             
-                            let jsonResult = try JSONSerialization.jsonObject(with: incomingData, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject;
+                            let hits = jSONResult["hits"] as! NSArray
                             
-                            print(jsonResult);
-                           /* print(jsonResult["weather"])
+                            //print(hits)
                             
-                            let weather = jsonResult["weather"] as! NSArray;
+                            let id = hits.firstObject as! [String : AnyObject]
                             
-                            let weather1 = weather.firstObject as! [String : AnyObject];
+                            //print(id)
                             
-                            if let description = weather1["description"] as? String{
+                           // if  let type = id["type"] as? String{
                                 
-                                
-                                
-                                DispatchQueue.main.sync(execute: {
-                                    self.currentWeather = description;
+                             //   self.nameArray.append(type)                            }
+                            
+                            if let fullHDURL = id["previewURL"] as? String{
+                                print(fullHDURL)
+                                if let url = URL(string: fullHDURL){
+                                    let request = URLRequest(url: url)
+                                    let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                                        if error != nil {
+                                            
+                                            let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                                            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                                            alert.addAction(okButton)
+                                            self.present(alert, animated: true, completion: nil)
+                                            
+                                            
+                                        }else{
+                                            if let incomingData = data{
+                                                let image = UIImage(data: incomingData)
+                                                DispatchQueue.main.sync(execute : {
+                                                    self.resimlerArray.append(image!)
+                                                    
+                                                    
+                                                    
+                                                })
+                                                
+                                            }
+                                                                                   }
+                                                                            })
+                                    task.resume()
                                     
-                                    self.tableView.reloadData();
-                                })
+                                }
+                                
+                                
                                 
                             }
-                            */
-                        }catch{
-                            print("burada hata oluştu");
+                            
+                            
+                            
                         }
                         
                         
+                    } catch {
                         
                     }
                     
                 }
+                
+                
             }
             
-            task.resume();
             
         }
+        
+        task.resume()
+         self.searchTableView.reloadData()
+        
     }
- 
- 
- 
- }
+    
+        
+        
+        
+    }
+    
+
+        
+        
+
+
+
+
 

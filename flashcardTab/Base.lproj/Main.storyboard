@@ -111,33 +111,43 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNY-3x-Jjs">
                                 <rect key="frame" x="16" y="173" width="343" height="445"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="6BF-Ut-FGa"/>
+                                    <constraint firstAttribute="height" constant="445" id="DkN-x6-4kw"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="356" id="H9x-QO-G3N" customClass="searchCell" customModule="flashcardTab" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="356" id="H9x-QO-G3N" customClass="searchCellVC" customModule="flashcardTab" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="356"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H9x-QO-G3N" id="6kK-LL-1do">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="355.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EQd-lJ-WKU">
-                                                    <rect key="frame" x="-2" y="2" width="345" height="274"/>
-                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAc-un-spp">
-                                                    <rect key="frame" x="248" y="284" width="95" height="30"/>
+                                                    <rect key="frame" x="248" y="284" width="51" height="30"/>
                                                     <color key="backgroundColor" red="0.5150071573881031" green="0.76329744170984459" blue="0.28123149215299104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="choose">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="selectImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="EQd-lJ-WKU">
+                                                    <rect key="frame" x="33" y="39" width="277" height="219"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="277" id="GD8-Sp-voa"/>
+                                                        <constraint firstAttribute="height" constant="219" id="XPB-zT-FV5"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hAc-un-spp" firstAttribute="leading" secondItem="6kK-LL-1do" secondAttribute="leading" constant="248" id="8o6-r2-7HF"/>
-                                                <constraint firstAttribute="trailing" secondItem="EQd-lJ-WKU" secondAttribute="trailing" id="MD6-ca-4Ch"/>
-                                                <constraint firstItem="hAc-un-spp" firstAttribute="top" secondItem="EQd-lJ-WKU" secondAttribute="bottom" constant="8" id="VkV-yw-FBI"/>
+                                                <constraint firstAttribute="trailing" secondItem="EQd-lJ-WKU" secondAttribute="trailing" constant="33" id="MD6-ca-4Ch"/>
+                                                <constraint firstItem="hAc-un-spp" firstAttribute="top" secondItem="EQd-lJ-WKU" secondAttribute="bottom" constant="26" id="VkV-yw-FBI"/>
                                                 <constraint firstItem="hAc-un-spp" firstAttribute="top" secondItem="6kK-LL-1do" secondAttribute="top" constant="284" id="bLf-PL-eee"/>
-                                                <constraint firstItem="EQd-lJ-WKU" firstAttribute="trailing" secondItem="hAc-un-spp" secondAttribute="trailing" id="mBD-6T-jdn"/>
-                                                <constraint firstItem="EQd-lJ-WKU" firstAttribute="leading" secondItem="6kK-LL-1do" secondAttribute="leadingMargin" constant="-17" id="teu-Lr-mKw"/>
-                                                <constraint firstItem="EQd-lJ-WKU" firstAttribute="top" secondItem="6kK-LL-1do" secondAttribute="topMargin" constant="-9" id="ue4-ph-5Mp"/>
+                                                <constraint firstItem="EQd-lJ-WKU" firstAttribute="centerX" secondItem="6kK-LL-1do" secondAttribute="centerX" id="hyW-0U-Fp0"/>
+                                                <constraint firstAttribute="bottom" secondItem="hAc-un-spp" secondAttribute="bottom" constant="41.5" id="mei-J5-ERo"/>
+                                                <constraint firstAttribute="trailing" secondItem="hAc-un-spp" secondAttribute="trailing" constant="44" id="qqX-IF-RXX"/>
+                                                <constraint firstItem="EQd-lJ-WKU" firstAttribute="leading" secondItem="6kK-LL-1do" secondAttribute="leadingMargin" constant="18" id="teu-Lr-mKw"/>
+                                                <constraint firstItem="EQd-lJ-WKU" firstAttribute="top" secondItem="6kK-LL-1do" secondAttribute="topMargin" constant="28" id="ue4-ph-5Mp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -150,15 +160,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="FNY-3x-Jjs" secondAttribute="trailing" constant="16" id="1YX-lw-hhS"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="FNY-3x-Jjs" secondAttribute="bottom" id="F4U-30-Dzt"/>
+                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="leading" secondItem="Ck6-do-R3A" secondAttribute="leading" id="1kY-rg-78n"/>
+                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="Asi-wQ-AXj"/>
                             <constraint firstItem="g2U-GY-AQR" firstAttribute="top" secondItem="Ck6-do-R3A" secondAttribute="bottom" constant="8" id="IG9-bB-xBT"/>
-                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="M0t-Xd-Eyy"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="g2U-GY-AQR" secondAttribute="trailing" constant="16" id="YBJ-s9-8u7"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Ck6-do-R3A" secondAttribute="trailing" constant="16" id="ayX-16-QAQ"/>
                             <constraint firstItem="g2U-GY-AQR" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="15" id="dD2-5T-xjc"/>
                             <constraint firstItem="Ck6-do-R3A" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="19" id="fSl-9T-h6h"/>
-                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="top" secondItem="g2U-GY-AQR" secondAttribute="bottom" constant="22" id="r47-mY-Sx3"/>
                             <constraint firstItem="Ck6-do-R3A" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="tfC-mo-UgJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
@@ -233,6 +241,7 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="selectImage.png" width="302" height="259"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DNf-KE-1fQ"/>
