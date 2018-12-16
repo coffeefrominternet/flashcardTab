@@ -129,6 +129,9 @@
                                                     <state key="normal" title="choose">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="chooseClicked:" destination="H9x-QO-G3N" eventType="touchUpInside" id="x3O-IR-0i5"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="selectImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="EQd-lJ-WKU">
                                                     <rect key="frame" x="33" y="39" width="277" height="219"/>

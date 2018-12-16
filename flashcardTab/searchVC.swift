@@ -56,8 +56,8 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
     
     
     @IBAction func searchButtonClicked(_ sender: Any) {
+
         if searchTF.text != ""{
-            
             arananKelime = searchTF.text!
         }
         
@@ -86,18 +86,19 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
                             
                             let hits = jSONResult["hits"] as! NSArray
                             
-                            //print(hits)
+                            self.resimlerArray.removeAll(keepingCapacity: false)
+                          //  print(hits)
+                            for indexim in 0...19{
+                            let id = hits[indexim] as AnyObject
+
+                          //print(id)
                             
-                            let id = hits.firstObject as! [String : AnyObject]
-                            
-                            //print(id)
-                            
-                           // if  let type = id["type"] as? String{
+                           // if  let previewURL = id["previewURL"] as? String{
                                 
                              //   self.nameArray.append(type)                            }
-                            
+                         
                             if let fullHDURL = id["previewURL"] as? String{
-                                print(fullHDURL)
+                             //   print(fullHDURL)
                                 if let url = URL(string: fullHDURL){
                                     let request = URLRequest(url: url)
                                     let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -115,51 +116,36 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
                                                 DispatchQueue.main.sync(execute : {
                                                     self.resimlerArray.append(image!)
                                                     
-                                                    
-                                                    
                                                 })
-                                                
                                             }
-                                                                                   }
-                                                                            })
-                                    task.resume()
-                                    
+                                        }
+                                    })
+                                    task.resume()}
                                 }
-                                
-                                
-                                
-                            }
-                            
-                            
-                            
+                                }
                         }
-                        
-                        
-                    } catch {
-                        
-                    }
-                    
+                        }
+                        catch
+                        {
+                        }
                 }
-                
-                
             }
-            
-            
         }
-        
         task.resume()
-         self.searchTableView.reloadData()
         
+         listeyiYenile()
     }
     
-        
-        
+    func listeyiYenile(){
+        self.searchTableView.reloadData()
+    }
         
     }
     
 
         
         
+
 
 
 
