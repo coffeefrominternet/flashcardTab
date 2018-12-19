@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import Parse
+
+
 var arananKelime = "bird"
-class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
+class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource , UINavigationControllerDelegate{
   
     
-
+    var resimlerArray = [UIImage]()
+    var kelimelerArray = [String]()
+    
+    
     //mark variables
     var myApiID = "7507132-6d060e01c5cf8a2e0ff1c0552"
     
     
-    var resimlerArray = [UIImage]()
-    var nameArray = [String]()
-    
-    
+
+    var yuklenecekKelime = "no word"
+    var yukleyenKullanici = "eddy"
     
     
     //mark outlets
@@ -35,6 +40,30 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
         super.viewDidLoad()
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        
+    /*    let pfObject = PFObject(className: "myList")
+        pfObject["resimlinklerim"] = "URL2"
+        pfObject["kelimelerim"] = "horse"
+
+        pfObject.saveInBackground { (success, error) in
+            if error != nil {
+                
+         let alert = UIAlertController(title: "error", message: "get-data error", preferredStyle: UIAlertController.Style.alert)
+         let okButton = UIAlertAction(title: "ok", style: UIAlertAction.Style.cancel, handler: nil)
+         
+         alert.addAction(okButton)
+         self.present(alert, animated: true, completion: nil)
+            }else{
+                print("saved")
+            }
+        }
+        */
+      
+        
+        
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,7 +71,7 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for : indexPath) as! searchCellVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for : indexPath) as! searchCellVC
         
         
         cell.searchCellImageView.image = resimlerArray[indexPath.row]
@@ -114,7 +143,7 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
                                             if let incomingData = data{
                                                 let image = UIImage(data: incomingData)
                                                 DispatchQueue.main.sync(execute : {
-                                                    self.resimlerArray.append(image!)
+                                              self.resimlerArray.append(image!)
                                                     
                                                 })
                                             }
@@ -139,8 +168,34 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource{
     func listeyiYenile(){
         self.searchTableView.reloadData()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data2 = resimlerArray[indexPath.row].jpegData(compressionQuality: 0.5)
+        let pfImage = PFFile(name: "resimlerim.png", data: data2!)
+        let pfObject = PFObject(className: "myList")
+        pfObject["username"] = yukleyenKullanici
+        pfObject["resimlerim"] = pfImage
+        pfObject["kelimelerim"] = arananKelime
+        pfObject.saveInBackground { (success, error) in
+            if error != nil {
+                let alert = UIAlertController(title: error?.localizedDescription, message: "get-data error", preferredStyle: UIAlertController.Style.alert)
+                let okButton = UIAlertAction(title: "ok", style: UIAlertAction.Style.cancel, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                print("saved")
+            }        }
+
+        self.tabBarController!.selectedIndex = 0
+        
+    }
+
+    }
+    
+    
     
 
         

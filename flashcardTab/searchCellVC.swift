@@ -7,13 +7,11 @@
 //
 
 import UIKit
-
+import Parse
 
 class searchCellVC: UITableViewCell {
 
     
-    var Mylist = [AnyObject]()
-    var myWords = [String]()
     
     
     
@@ -39,17 +37,7 @@ class searchCellVC: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func chooseClicked(_ sender: Any) {
-        
-        Mylist.append(searchCellImageView.image!)
-        
-        myWords.append(arananKelime)
-        
-        
-      
-        let tabBarController = UITabBarController()
-        tabBarController.selectedIndex = 0
-    }
+
   
     
 }
