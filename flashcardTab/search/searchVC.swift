@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 
+
 var arananKelime = "bird"
 class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource , UINavigationControllerDelegate{
   
@@ -174,7 +175,7 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data2 = resimlerArray[indexPath.row].jpegData(compressionQuality: 0.5)
-        let pfImage = PFFile(name: "resimlerim.png", data: data2!)
+        let pfImage = PFFileObject(name: "resimlerim.png", data: data2!)
         let pfObject = PFObject(className: "myList")
         pfObject["username"] = yukleyenKullanici
         pfObject["resimlerim"] = pfImage

@@ -15,7 +15,7 @@ class searchCellVC: UITableViewCell {
     
     
     
-    // mark outlets
+    // mark outletss
     
     
     @IBOutlet weak var searchCellImageView: UIImageView!

@@ -14,7 +14,9 @@ class myClass {
     var myClassName = ""
     var myClassEmail = ""
     var myClassimageURL = ""
+    var myClassTelephoneNumber = ""
+    var googleGirisimiYapildi = "googlegirisyapilmadi"
     
-    
+
     
 }

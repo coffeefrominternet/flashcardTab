@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Parse
+import Firebase
+import  GoogleSignIn
+
  
 class profileVC: UIViewController {
     @IBOutlet weak var profileIDLBL: UILabel!
@@ -17,6 +21,7 @@ class profileVC: UIViewController {
     
     @IBOutlet weak var profileEmailLBL: UILabel!
     
+    @IBOutlet weak var profileTelephoneLBL: UILabel!
     var ImageURL = "" as String
     
   
@@ -25,15 +30,21 @@ class profileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        self.profileIDLBL.text = myClass.shared.myClassID
-        self.profileNameLBL.text = myClass.shared.myClassName
-        self.profileEmailLBL.text = myClass.shared.myClassEmail
+      
+   
+   
+    
         
-ImageURL = myClass.shared.myClassimageURL
+        let user = Auth.auth().currentUser
+
         
-        if let url = URL(string: ImageURL){
+let myImageURL = user?.photoURL
+        self.profileIDLBL.text = user?.uid
+        self.profileNameLBL.text = user?.displayName
+        self.profileEmailLBL.text = user?.email
+       
             
-            let request = URLRequest(url: url)
+            let request = URLRequest(url: myImageURL!)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if error != nil {
                     print(" resim gelmedi")
@@ -45,13 +56,43 @@ ImageURL = myClass.shared.myClassimageURL
                         })
                     }
                 }
-            }
-            task.resume()
         }
+        task.resume()
+
       
         
     }
     
     
+    @IBAction func logOutClicked(_ sender: Any) {
+        
+        PFUser.logOutInBackground { (error) in
+            if error != nil {
+                let alert = UIAlertController(title: "error", message: "logot error", preferredStyle: UIAlertController.Style.alert)
+                let button = UIAlertAction(title: "ok", style: UIAlertAction.Style.cancel, handler: nil)
+                alert.addAction(button)
+                self.present(alert, animated: true, completion: nil)
+                
+            }else{
+                UserDefaults.standard.removeObject(forKey: "username")
+                UserDefaults.standard.synchronize()
+                
+         
+                myClass.shared.myClassID = ""
+                myClass.shared.myClassEmail = ""
+                myClass.shared.myClassName = ""
+                myClass.shared.myClassimageURL = ""
+
+                let signin = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signInVC
+                
+                
+                let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+               delegate.window?.rootViewController = signin
+                delegate.rememberUser()
+                
+            }
+        }
+        
+    }
     
     }

@@ -8,11 +8,12 @@
 
 import UIKit
 import Parse
-
+import Firebase
+import  GoogleSignIn
 
 
 var myWordsList = [String]()
-var myPicturesList = [PFFile]()
+var myPicturesList = [PFFileObject]()
 class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource{
   
    
@@ -37,8 +38,13 @@ class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         refreshAction.tintColor = UIColor.blue
         self.cardListTableView.addSubview(refreshAction)
         
-    }
+   
   
+  
+    
+    
+    }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,7 +105,7 @@ class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource
                     
                     for object in objects!{
                         
-                        myPicturesList.append(object.object(forKey: "resimlerim") as! PFFile)
+                        myPicturesList.append(object.object(forKey: "resimlerim") as! PFFileObject)
                         
                         
                     }}
