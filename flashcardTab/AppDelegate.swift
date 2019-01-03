@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInDelegate{
 
         return true
     }
-  
+
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let err = error{
             print("google girrilemedi")

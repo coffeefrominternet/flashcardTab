@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import Firebase
 import  GoogleSignIn
-
+import SCLAlertView
 
 var myWordsList = [String]()
 var myPicturesList = [PFFileObject]()
@@ -19,9 +19,7 @@ class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource
    
     
  
-    
-    
-    
+
     //mark outlets
     
     @IBOutlet weak var cardListTableView: UITableView!
@@ -38,17 +36,37 @@ class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         refreshAction.tintColor = UIColor.blue
         self.cardListTableView.addSubview(refreshAction)
         
-   
-  
-  
-    
+   getData()
+
     
     }
     
+ 
+    
+    
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        
+        if event?.subtype == UIEvent.EventSubtype.motionShake {
+            print("cihaz salandi")
+       
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath) as! cardlistCell
+        
+        if cell.cardListCellLBL.isHidden == true{
+            cell.cardListCellLBL.isHidden = false
+        }else{
+            cell.cardListCellLBL.isHidden = true
+        }
+        
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        getData()
+       
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,10 +101,19 @@ class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         getData()
        
     }
+  
+ 
+    
+    
+    
+    
     
     func getData(){
         myPicturesList.removeAll(keepingCapacity: false)
         myWordsList.removeAll(keepingCapacity: false)
+        self.cardListTableView.reloadData()
+
+        
         let query = PFQuery(className: "myList")
         query.findObjectsInBackground { (objects, error) in
             if error != nil {
@@ -98,14 +125,24 @@ class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource
                 if objects != nil {
                     for object in objects!{
                         print(object["kelimelerim"] as! String )
-                        myWordsList.append(object["kelimelerim"] as! String)
+                        
+                        myWordsList.insert(object["kelimelerim"] as! String, at: 0)
+                        
+                        
+                        
+                       // myWordsList.append(object["kelimelerim"] as! String)
                     }}
                 
                 if objects != nil{
                     
                     for object in objects!{
                         
-                        myPicturesList.append(object.object(forKey: "resimlerim") as! PFFileObject)
+                       
+                        myPicturesList.insert(object["resimlerim"] as! PFFileObject, at: 0)
+
+                        
+                        
+                        // myPicturesList.append(object.object(forKey: "resimlerim") as! PFFileObject)
                         
                         
                     }}

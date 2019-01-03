@@ -11,7 +11,9 @@ import Parse
 import Firebase
 import  GoogleSignIn
 
- 
+import FirebaseCore
+import  FirebaseAuth
+
 class profileVC: UIViewController {
     @IBOutlet weak var profileIDLBL: UILabel!
     
@@ -32,7 +34,7 @@ class profileVC: UIViewController {
    
       
    
-   
+        if myClass.shared.googleGirisimiYapildi == "googlegirisyapildi"{
     
         
         let user = Auth.auth().currentUser
@@ -58,13 +60,32 @@ let myImageURL = user?.photoURL
                 }
         }
         task.resume()
-
-      
+        }
+        else{
+            let user = PFUser.current()
+            self.profileNameLBL.text = user?.username
+            self.profileEmailLBL.text = user?.email
+            
+        }
         
     }
     
     
     @IBAction func logOutClicked(_ sender: Any) {
+        
+        if myClass.shared.googleGirisimiYapildi == "googlegirisyapildi"{
+            
+            let googleCikis = Auth.auth()
+            do{
+                try googleCikis.signOut()
+                
+            }catch let signOutError as NSError   {
+                print(signOutError)
+            }
+        }
+        
+        
+        
         
         PFUser.logOutInBackground { (error) in
             if error != nil {

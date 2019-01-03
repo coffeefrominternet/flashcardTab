@@ -52,7 +52,7 @@ class signInVC: UIViewController  , GIDSignInUIDelegate , UIApplicationDelegate 
         
     }
 
-    
+
     
     
    
@@ -109,6 +109,7 @@ class signInVC: UIViewController  , GIDSignInUIDelegate , UIApplicationDelegate 
                         
                         let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
                         delegate.rememberUser()
+                        myClass.shared.googleGirisimiYapildi = ""
                     }
                 }}
             else{
@@ -140,7 +141,7 @@ class signInVC: UIViewController  , GIDSignInUIDelegate , UIApplicationDelegate 
                             UserDefaults.standard.synchronize()
                             let delegate: AppDelegate = UIApplication.shared.delegate  as! AppDelegate
                             delegate.rememberUser()
-                            
+                            myClass.shared.googleGirisimiYapildi = ""
                         }
                     }
                     
