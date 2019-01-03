@@ -176,8 +176,7 @@ class searchVC : UIViewController , UITableViewDelegate , UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
    
-        
-        
+        yukleyenKullanici = UserDefaults.standard.string(forKey: "username")!
         
         let data2 = resimlerArray[indexPath.row].jpegData(compressionQuality: 0.5)
         let pfImage = PFFileObject(name: "resimlerim.png", data: data2!)

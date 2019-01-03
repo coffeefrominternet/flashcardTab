@@ -7,8 +7,51 @@
 //
 
 import Foundation
-
-/* 
+/*  let query = PFQuery(className: "myList")
+ 
+ query.findObjectsInBackground { (objects, error) in
+ 
+ if error != nil {
+ let alert = UIAlertController(title: "error", message: "get-data error", preferredStyle: UIAlertController.Style.alert)
+ let okButton = UIAlertAction(title: "ok", style: UIAlertAction.Style.cancel, handler: nil)
+ alert.addAction(okButton)
+ self.present(alert, animated: true, completion: nil)
+ }else{
+ if objects != nil {
+ 
+ 
+ for object in objects!{
+ 
+ 
+ print(object["kelimelerim"] as! String )
+ 
+ myWordsList.insert(object["kelimelerim"] as! String, at: 0)
+ 
+ 
+ 
+ // myWordsList.append(object["kelimelerim"] as! String)
+ }}
+ 
+ if objects != nil{
+ 
+ for object in objects!{
+ 
+ 
+ myPicturesList.insert(object["resimlerim"] as! PFFileObject, at: 0)
+ 
+ 
+ 
+ // myPicturesList.append(object.object(forKey: "resimlerim") as! PFFileObject)
+ 
+ 
+ }}
+ self.cardListTableView.reloadData()
+ 
+ 
+ 
+ }
+ 
+ }*//* 
  let user = Auth.auth().currentUser
  let userUID = user?.uid
  let userName = user?.displayName

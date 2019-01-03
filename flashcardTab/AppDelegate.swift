@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInDelegate{
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
         
-        
         let configuration = ParseClientConfiguration { (ParseMutableClientConfiguration) in
             ParseMutableClientConfiguration.applicationId = "2yDDJhP1X38NGllYYot5NMp4IoJMbAP19RPdmxEF"
             ParseMutableClientConfiguration.clientKey = "ZA5L6cd2VpUVCX317Ery6Gk4QmC0kw306oMdjAzr"
@@ -68,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInDelegate{
             if let err = error {
                 print("failed account error",err)
                 return
-            }
+            }else{
           
             
             print("Success google authentification"  )
@@ -85,6 +84,7 @@ print(myClass.shared.googleGirisimiYapildi)
             UserDefaults.standard.set(user?.displayName, forKey: "username")
             UserDefaults.standard.synchronize()
             self.rememberUser()
+            }
             
         }
     }

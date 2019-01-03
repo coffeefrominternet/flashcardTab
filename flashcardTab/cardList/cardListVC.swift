@@ -109,50 +109,35 @@ class cardListVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     
     func getData(){
+
         myPicturesList.removeAll(keepingCapacity: false)
         myWordsList.removeAll(keepingCapacity: false)
         self.cardListTableView.reloadData()
 
-        
-        let query = PFQuery(className: "myList")
+let query = PFQuery(className: "myList")
+        query.whereKey("username", equalTo: UserDefaults.standard.string(forKey: "username")! )
         query.findObjectsInBackground { (objects, error) in
+            
             if error != nil {
                 let alert = UIAlertController(title: "error", message: "get-data error", preferredStyle: UIAlertController.Style.alert)
                 let okButton = UIAlertAction(title: "ok", style: UIAlertAction.Style.cancel, handler: nil)
                 alert.addAction(okButton)
                 self.present(alert, animated: true, completion: nil)
             }else{
-                if objects != nil {
-                    for object in objects!{
-                        print(object["kelimelerim"] as! String )
-                        
-                        myWordsList.insert(object["kelimelerim"] as! String, at: 0)
-                        
-                        
-                        
-                       // myWordsList.append(object["kelimelerim"] as! String)
-                    }}
-                
-                if objects != nil{
-                    
-                    for object in objects!{
-                        
-                       
-                        myPicturesList.insert(object["resimlerim"] as! PFFileObject, at: 0)
-
-                        
-                        
-                        // myPicturesList.append(object.object(forKey: "resimlerim") as! PFFileObject)
-                        
-                        
-                    }}
+                for object in objects!{
+                print(object)
+                    myWordsList.insert(object["kelimelerim"] as! String, at: 0)
+                    myPicturesList.insert(object["resimlerim"] as! PFFileObject, at: 0)
+                }
                 self.cardListTableView.reloadData()
-                
-                
-                
+
             }
-            
         }
+        
+        
+        
+        
+    
     }
 }
 

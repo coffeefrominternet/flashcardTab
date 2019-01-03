@@ -72,17 +72,35 @@ let myImageURL = user?.photoURL
     
     
     @IBAction func logOutClicked(_ sender: Any) {
-        
+        print(myClass.shared.googleGirisimiYapildi)
         if myClass.shared.googleGirisimiYapildi == "googlegirisyapildi"{
-            
-            let googleCikis = Auth.auth()
-            do{
-                try googleCikis.signOut()
+             myClass.shared.googleGirisimiYapildi = "googlegirisyapilmadi"
+            print(myClass.shared.googleGirisimiYapildi)
+           // let googleCikis = Auth.auth()
+            GIDSignIn.sharedInstance()?.signOut()
+            if GIDSignIn.sharedInstance()?.currentUser == nil {
+                print(" logget out from google")
                 
-            }catch let signOutError as NSError   {
-                print(signOutError)
-            }
-        }
+                UserDefaults.standard.removeObject(forKey: "username")
+                UserDefaults.standard.synchronize()
+                myClass.shared.myClassID = ""
+                myClass.shared.myClassEmail = ""
+                myClass.shared.myClassName = ""
+                myClass.shared.myClassimageURL = ""
+                
+                let signin = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signInVC
+                
+                
+                let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                delegate.window?.rootViewController = signin
+                delegate.rememberUser()            }
+            
+         
+            
+            
+            
+    
+        }else {
         
         
         
@@ -117,3 +135,4 @@ let myImageURL = user?.photoURL
     }
     
     }
+}
