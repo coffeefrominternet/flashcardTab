@@ -72,6 +72,9 @@ let myImageURL = user?.photoURL
     
     
     @IBAction func logOutClicked(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "gotosignin", sender: nil)
+        
         print(myClass.shared.googleGirisimiYapildi)
         if myClass.shared.googleGirisimiYapildi == "googlegirisyapildi"{
              myClass.shared.googleGirisimiYapildi = "googlegirisyapilmadi"
@@ -87,6 +90,7 @@ let myImageURL = user?.photoURL
                 myClass.shared.myClassEmail = ""
                 myClass.shared.myClassName = ""
                 myClass.shared.myClassimageURL = ""
+                
                 
                 let signin = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signInVC
                 
@@ -122,12 +126,12 @@ let myImageURL = user?.photoURL
                 myClass.shared.myClassName = ""
                 myClass.shared.myClassimageURL = ""
 
-                let signin = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signInVC
+              //  let signin = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signInVC
                 
                 
-                let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-               delegate.window?.rootViewController = signin
-                delegate.rememberUser()
+              //  let delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+              // delegate.window?.rootViewController = signin
+               // delegate.rememberUser()
                 
             }
         }

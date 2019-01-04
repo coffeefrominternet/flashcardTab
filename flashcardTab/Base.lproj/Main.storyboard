@@ -71,7 +71,7 @@
                     <navigationItem key="navigationItem" id="vsb-Oa-kqG"/>
                     <connections>
                         <outlet property="cardListTableView" destination="gew-gI-fjO" id="Bge-wg-J8N"/>
-                        <segue destination="8rJ-Kc-sve" kind="show" identifier="cardlistTOsearch" id="DNf-KE-1fQ"/>
+                        <segue destination="8rJ-Kc-sve" kind="presentation" identifier="cardlistTOsearch" modalTransitionStyle="flipHorizontal" id="DNf-KE-1fQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -87,13 +87,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="car,bird,anything" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ck6-do-R3A">
-                                <rect key="frame" x="16" y="83" width="343" height="30"/>
+                                <rect key="frame" x="16" y="39" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2U-GY-AQR">
-                                <rect key="frame" x="16" y="121" width="343" height="30"/>
+                                <rect key="frame" x="16" y="77" width="343" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.51798403280000005" blue="0.63825938839999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="search">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,7 +102,7 @@
                                     <action selector="searchButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="nyf-BG-J2x"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNY-3x-Jjs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNY-3x-Jjs">
                                 <rect key="frame" x="16" y="178" width="343" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -147,9 +147,9 @@
                         <constraints>
                             <constraint firstItem="Ck6-do-R3A" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="19" id="9A9-DA-XPm"/>
                             <constraint firstItem="g2U-GY-AQR" firstAttribute="top" secondItem="Ck6-do-R3A" secondAttribute="bottom" constant="8" id="L7n-vM-grC"/>
-                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="NHo-UM-NCz"/>
-                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="top" secondItem="g2U-GY-AQR" secondAttribute="bottom" constant="22" id="OCc-CS-iqf"/>
-                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="Wb4-7O-CT9"/>
+                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="16" id="NHo-UM-NCz"/>
+                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="top" secondItem="g2U-GY-AQR" secondAttribute="bottom" constant="71" id="OCc-CS-iqf"/>
+                            <constraint firstItem="FNY-3x-Jjs" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" constant="-80" id="Wb4-7O-CT9"/>
                             <constraint firstItem="FNY-3x-Jjs" firstAttribute="centerX" secondItem="g2U-GY-AQR" secondAttribute="centerX" id="Zik-PO-XYo"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Ck6-do-R3A" secondAttribute="trailing" constant="16" id="b82-qD-nY8"/>
                             <constraint firstItem="g2U-GY-AQR" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="c2w-bj-WGX"/>
@@ -166,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.8" y="373.76311844077964"/>
+            <point key="canvasLocation" x="1852" y="623"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -259,6 +259,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logOutClicked:" destination="URe-ty-QP5" eventType="touchUpInside" id="6o9-rc-28a"/>
+                                    <segue destination="SzZ-xR-F7E" kind="presentation" identifier="gotosignin" modalTransitionStyle="flipHorizontal" id="yKg-KH-L7X"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkR-el-BYB">
@@ -298,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JWy-EF-Zfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749.5999999999999" y="1108.6956521739132"/>
+            <point key="canvasLocation" x="1015" y="1091"/>
         </scene>
         <!--Sign InVC-->
         <scene sceneID="mZV-YC-kvP">
@@ -358,7 +359,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hqu-eq-FMU" firstAttribute="top" secondItem="gT3-1m-ggv" secondAttribute="bottom" constant="8" id="1JE-dc-8F6"/>
                             <constraint firstItem="vlq-BY-q7c" firstAttribute="trailing" secondItem="gT3-1m-ggv" secondAttribute="trailing" constant="16" id="3FG-BS-fyP"/>
@@ -390,7 +391,7 @@
                         <outlet property="passwordTF" destination="8Uu-uB-aGo" id="WVG-sU-Tr9"/>
                         <outlet property="signINOKBTN" destination="inw-Gq-NRk" id="sKa-7G-Kfi"/>
                         <outlet property="usernameTF" destination="VH9-dp-uGM" id="U9q-DZ-y6j"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="toTabbar" id="aYc-rP-en3"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="toTabbar" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="aYc-rP-en3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5C-QD-Gel" userLabel="First Responder" sceneMemberID="firstResponder"/>

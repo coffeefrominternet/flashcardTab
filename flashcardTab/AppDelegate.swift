@@ -99,11 +99,17 @@ print(myClass.shared.googleGirisimiYapildi)
     
     
     func rememberUser(){
+        
+        
         let user: String? = UserDefaults.standard.string(forKey: "username")
         if user != nil{
+            
+        
+            
             let board: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let tabBar = board.instantiateViewController(withIdentifier: "cardStoryboardID") as! UITabBarController
-            window?.rootViewController = tabBar
+            window?.rootViewController = tabBar 
+           
             
         }
         
